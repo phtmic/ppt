@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>In Loving Memory - 3D Cinematic Slideshow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Reveal.js Core & Theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css" id="theme">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        --accent-gold: #e5c158;
+        --soft-white: #f5f5f7;
+        --muted-text: #b0b0b8;
+      }
+      
+      .reveal {
+        font-family: 'Lora', serif;
+        color: var(--soft-white);
+      }
+      
+      .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+        font-family: 'Cinzel', serif;
+        color: var(--accent-gold);
+        letter-spacing: 2px;
+        text-transform: none;
+        text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      }
+
+      /* 3D Split Grid Layout */
+      .memorial-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 40px;
+        align-items: center;
+        text-align: left;
+      }
+
+      /* 3D Floating Photo Frame with Glow & Tilt */
+      .photo-frame-3d {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 
+                    0 0 25px rgba(229, 193, 88, 0.2);
+        border: 2px solid rgba(229, 193, 88, 0.4);
+        transform: perspective(1000px) rotateY(4deg) rotateX(2deg);
+        transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease;
+      }
+
+      .photo-frame-3d:hover {
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 
+                    0 0 35px rgba(229, 193, 88, 0.4);
+      }
+      
+      .photo-frame-3d img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        display: block;
+        filter: contrast(1.05) brightness(0.95);
+      }
+
+      /* Description & Text Styling */
+      .memorial-details h3 {
+        margin-top: 0;
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+      }
+      
+      .memorial-details .date-tag {
+        display: inline-block;
+        font-size: 0.9rem;
+        color: var(--accent-gold);
+        border-bottom: 1px solid var(--accent-gold);
+        padding-bottom: 4px;
+        margin-bottom: 15px;
+        font-family: 'Cinzel', serif;
+        letter-spacing: 1px;
+      }
+      
+      .memorial-details p {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: #e0e0e8;
+      }
+
+      /* 3D Quote Box */
+      .quote-box-3d {
+        font-style: italic;
+        border-left: 3px solid var(--accent-gold);
+        background: rgba(255, 255, 255, 0.03);
+        padding: 15px 20px;
+        border-radius: 0 8px 8px 0;
+        margin-top: 20px;
+        color: var(--muted-text);
+        font-size: 0.95rem;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- Slide 1: 3D Cover Screen -->
+        <section data-transition="zoom">
+          <p style="font-family: 'Cinzel', serif; letter-spacing: 4px; color: var(--accent-gold); text-transform: uppercase; font-size: 0.9rem;">In Loving Memory Of</p>
+          <h1 style="font-size: 3.5rem; margin: 25px 0; text-shadow: 0 5px 20px rgba(229,193,88,0.3);">Johnathan Doe</h1>
+          <p style="font-size: 1.3rem; color: var(--muted-text); letter-spacing: 1px;">1950 – 2024</p>
+          <p style="margin-top: 50px;"><small style="color: rgba(255,255,255,0.5);">Use arrow keys to rotate through the memories</small></p>
+        </section>
+
+        <!-- Slide 2: Photo + Description (Cube Transition) -->
+        <section data-transition="cube">
+          <div class="memorial-grid">
+            <div class="photo-frame-3d">
+              <img src="https://picsum.photos/id/1012/600/800" alt="Early Years Photo">
+            </div>
+            <div class="memorial-details">
+              <span class="date-tag">Chapter I — Early Years</span>
+              <h3>A Bright Beginning</h3>
+              <p class="fragment" data-fragment-index="1">Born and raised amidst rolling hills, Johnathan developed a lifelong love for nature, quiet observation, and storytelling at an early age.</p>
+              <div class="quote-box-3d fragment" data-fragment-index="2">
+                "Every morning brought a new trail to explore and a new story to write."
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 3: Photo + Description (Cube Transition) -->
+        <section data-transition="cube">
+          <div class="memorial-grid">
+            <div class="photo-frame-3d">
+              <img src="https://picsum.photos/id/1025/600/800" alt="Family Photo">
+            </div>
+            <div class="memorial-details">
+              <span class="date-tag">Chapter II — Family & Journey</span>
+              <h3>Building a Legacy</h3>
+              <p class="fragment" data-fragment-index="1">Surrounded by lifelong friends and a loving family, he dedicated his energy to kindness, integrity, and building things that lasted.</p>
+              <p class="fragment" data-fragment-index="2" style="color: var(--muted-text); font-size: 0.95rem; margin-top: 10px;">
+                Always the first to help a neighbor and the anchor of every family gathering.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 4: Photo + Description (Cube Transition) -->
+        <section data-transition="cube">
+          <div class="memorial-grid">
+            <div class="photo-frame-3d">
+              <img src="https://picsum.photos/id/1043/600/800" alt="Passions Photo">
+            </div>
+            <div class="memorial-details">
+              <span class="date-tag">Chapter III — Passions</span>
+              <h3>Life’s Great Adventures</h3>
+              <p class="fragment" data-fragment-index="1">Whether crafting timber in his workshop or sailing quiet waters under open skies, he found profound peace in meticulous craftsmanship.</p>
+              <div class="quote-box-3d fragment" data-fragment-index="2">
+                "The quiet moments in nature are where we truly find ourselves."
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 5: 3D Final Tribute -->
+        <section data-transition="zoom">
+          <h2>Forever In Our Hearts</h2>
+          <p style="max-width: 700px; margin: 30px auto; font-style: italic; color: #d0d0d8; line-height: 1.8; font-size: 1.15rem;">
+            "Those we love don't go away, they walk beside us every day.<br>
+            Unseen, unheard, but always near, so loved, so missed, so very dear."
+          </p>
+          <p style="color: var(--accent-gold); font-family: 'Cinzel', serif; margin-top: 40px; letter-spacing: 1.5px;">
+            Thank you for being part of his journey.
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        transition: 'cube',          // Enables 3D cube rotation between slides
+        transitionSpeed: 'slow',     // Smooths out the 3D rotation speed
+        parallaxBackgroundImage: 'https://picsum.photos/id/1039/1920/1080', // Subtle immersive background
+        parallaxBackgroundSize: '2100px 1200px',
+        controls: true,
+        progress: true,
+        center: true
+      });
+    </script>
+  </body>
+</html>
