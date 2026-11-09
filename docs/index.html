@@ -31,7 +31,7 @@
         height: 100vh;
       }
 
-      /* LAYER 1: Endless Background Video Loop (bg_vid.mp4) */
+      /* LAYER 1: Endless Background Video Loop (bg_vid.mp4) - Full Brightness */
       .bg-video-container {
         position: fixed;
         top: 0;
@@ -48,7 +48,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: brightness(0.85) contrast(1.05);
+        filter: none; 
       }
 
       /* LAYER 2: Apple Liquid Dynamic Background Orbs */
@@ -67,7 +67,7 @@
         position: absolute;
         border-radius: 50%;
         filter: blur(140px);
-        opacity: 0.4;
+        opacity: 0.25;
         animation: floatOrb 18s ease-in-out infinite alternate;
       }
 
@@ -80,16 +80,9 @@
         100% { transform: translate(70px, 60px) scale(1.18); }
       }
 
-      /* LAYER 3: Vignette Overlay */
+      /* LAYER 3: Vignette Overlay - Disabled */
       .bg-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
-        z-index: 3;
-        pointer-events: none;
+        display: none; 
       }
       
       /* LAYER 4: Slides & Controls */
@@ -124,6 +117,64 @@
         color: var(--accent-gold);
       }
 
+      /* Apple-Style Cinematic Entrance Animations for Slide 1 */
+      @keyframes appleFadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+          filter: blur(8px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      .apple-hero-eyebrow {
+        letter-spacing: 4px;
+        color: var(--accent-gold);
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        font-weight: 600;
+        opacity: 0;
+        animation: appleFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+      }
+
+      .apple-hero-title {
+        font-size: 4.5rem !important;
+        margin: 20px 0;
+        font-weight: 700;
+        opacity: 0;
+        animation: appleFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+        filter: drop-shadow(0 4px 30px rgba(0,0,0,0.9));
+      }
+
+      .apple-hero-dates {
+        font-size: 1.35rem;
+        color: var(--soft-white);
+        letter-spacing: 2px;
+        font-weight: 500;
+        opacity: 0;
+        animation: appleFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+      }
+
+      .apple-hero-footer {
+        margin-top: 60px;
+        opacity: 0;
+        animation: appleFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+      }
+
+      .apple-hero-footer small {
+        color: rgba(255, 255, 255, 0.8) !important;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+      }
+
       /* Apple Split Grid Layout */
       .memorial-grid {
         display: grid;
@@ -141,7 +192,7 @@
         }
       }
 
-      /* TRUE TRANSPARENT EDGELESS PHOTO: Using drop-shadow to eliminate black box artifacts */
+      /* TRUE TRANSPARENT EDGELESS PHOTO */
       .photo-frame-3d {
         position: relative;
         display: block;
@@ -175,12 +226,12 @@
         filter: contrast(1.05) brightness(0.98) drop-shadow(0 35px 50px rgba(0, 0, 0, 0.7));
       }
 
-      /* Apple Liquid Glassmorphism Text Cards - Always Visible */
+      /* Apple Liquid Glassmorphism Text Cards */
       .memorial-details {
-        background: rgba(255, 255, 255, 0.04) !important;
-        backdrop-filter: blur(40px) !important;;
+        background: rgba(20, 20, 25, 0.45) !important;
+        backdrop-filter: blur(40px) !important;
         -webkit-backdrop-filter: blur(40px);
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.15);
         padding: 35px;
         border-radius: 26px;
         box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
@@ -216,7 +267,7 @@
       .quote-box-3d {
         font-style: italic;
         border-left: 2px solid var(--accent-gold);
-        background: rgba(255, 255, 255, 0.02) !important;
+        background: rgba(255, 255, 255, 0.04) !important;
         padding: 15px 20px;
         border-radius: 0 14px 14px 0;
         margin-top: 20px;
@@ -232,7 +283,7 @@
         background: var(--accent-gold);
       }
 
-      /* Apple-Style Floating Bottom-Right Glass Dock */
+      /* Apple-Style Liquid Glass Floating Dock (No Scale, Prominent Hover) */
       .custom-controls-cluster {
         position: fixed;
         bottom: 30px;
@@ -240,50 +291,53 @@
         z-index: 9999;
         display: flex;
         align-items: center;
-        gap: 6px;
-        background: rgba(25, 25, 30, 0.65);
-        padding: 6px;
-        border-radius: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        gap: 3px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%), rgba(20, 20, 25, 0.65);
+        padding: 4px 6px;
+        border-radius: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        backdrop-filter: blur(30px) saturate(180%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        opacity: 1;
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .custom-controls-cluster.fade-out {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(12px) scale(0.98);
       }
 
       .control-btn {
         background: transparent;
         border: none;
         color: var(--soft-white);
-        width: 38px;
-        height: 38px;
+        width: 34px;
+        height: 34px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        font-size: 1.1rem;
-        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        font-size: 1.15rem;
+        font-weight: 700;
+        transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
       }
 
       .control-btn:hover {
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(245, 215, 127, 0.22);
         color: var(--accent-gold);
-        transform: scale(1.05);
+        box-shadow: 0 0 16px rgba(245, 215, 127, 0.4);
       }
 
       .control-btn:active {
-        transform: scale(0.95);
-      }
-
-      .control-divider {
-        width: 1px;
-        height: 18px;
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(245, 215, 127, 0.35);
       }
     </style>
   </head>
   <body>
-    <!-- LAYER 1: Endless Background Video Loop Container -->
+    <!-- LAYER 1: Endless Background Video Loop Container (Full Brightness) -->
     <div class="bg-video-container">
       <video autoplay muted loop playsinline>
         <source src="bg_vid.mp4" type="video/mp4">
@@ -298,27 +352,22 @@
       <div class="liquid-orb orb-3"></div>
     </div>
 
-    <!-- LAYER 3: Vignette Overlay -->
-    <div class="bg-overlay"></div>
-
-    <!-- Apple-Style Bottom-Right Glass Dock -->
-    <div class="custom-controls-cluster">
+    <!-- Apple-Style Liquid Glass Floating Dock -->
+    <div class="custom-controls-cluster" id="controlsCluster">
       <button class="control-btn" onclick="Reveal.prev()" title="Previous Slide">‹</button>
-      <div class="control-divider"></div>
       <button class="control-btn" id="fullscreenToggle" onclick="toggleFullscreen()" title="Toggle Fullscreen">⛶</button>
-      <div class="control-divider"></div>
       <button class="control-btn" onclick="Reveal.next()" title="Next Slide">›</button>
     </div>
 
     <div class="reveal">
       <div class="slides">
 
-        <!-- Slide 1: Apple Liquid Cover Screen -->
+        <!-- Slide 1: Apple Liquid Cinematic Cover Screen -->
         <section data-transition="fade">
-          <p style="letter-spacing: 4px; color: var(--accent-gold); text-transform: uppercase; font-size: 0.85rem; font-weight: 500;">In Loving Memory Of</p>
-          <h1 style="font-size: 4rem; margin: 20px 0; font-weight: 700;">Johnathan Doe</h1>
-          <p style="font-size: 1.25rem; color: var(--muted-text); letter-spacing: 1px; font-weight: 400;">1950 – 2024</p>
-          <p style="margin-top: 50px;"><small style="color: rgba(255,255,255,0.4); letter-spacing: 0.5px;">Swipe or use bottom-right controls to journey through memories</small></p>
+          <p class="apple-hero-eyebrow">In Loving Memory Of</p>
+          <h1 class="apple-hero-title">Johnathan Doe</h1>
+          <p class="apple-hero-dates">1950 – 2024</p>
+          <p class="apple-hero-footer"><small>Swipe or use bottom-right controls to journey through memories</small></p>
         </section>
 
         <!-- Slide 2: Photo + Description -->
@@ -411,6 +460,23 @@
           }
         }
       }
+
+      // Auto-Fade Navigation Bar on Mouse Inactivity (3 seconds)
+      let idleTimer;
+      const controlsCluster = document.getElementById('controlsCluster');
+
+      function resetIdleTimer() {
+        controlsCluster.classList.remove('fade-out');
+        clearTimeout(idleTimer);
+        
+        idleTimer = setTimeout(() => {
+          controlsCluster.classList.add('fade-out');
+        }, 3000);
+      }
+
+      document.addEventListener('mousemove', resetIdleTimer);
+      document.addEventListener('mousedown', resetIdleTimer);
+      resetIdleTimer();
     </script>
   </body>
 </html>
